@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "./Layout/Layout";
-import QuestionType from "./FormBuilder";
+import QuestionType from "./QuestionType";
 
 const FormBuilder = () => {
   // const [questionType, setQuestionType] = useState("");
@@ -27,12 +27,9 @@ const FormBuilder = () => {
 
   return (
     <Layout>
-      {/* <QuestionType onSelectType={handleSelectType} /> */}
-      {/* <button></button>
-       */}
       <div className="p-10 border m-10 rounded-xl">
         <div className="flex justify-between">
-          <div>
+          <div className="flex ">
             <input
               type="text"
               className="border-b outline-none"
@@ -40,10 +37,12 @@ const FormBuilder = () => {
               onChange={(e) => setFormName(e.target.value)}
               placeholder="Enter Project name"
             />
-            <ion-icon
-              onClick={() => setFormName("")}
-              name="close-outline"
-            ></ion-icon>
+            <div className="mt-2">
+              <ion-icon
+                onClick={() => setFormName("")}
+                name="close-outline"
+              ></ion-icon>
+            </div>
           </div>
 
           <button className="bg-[#A40E4C] text-white font-semibold px-3 py-1 rounded-xl">
