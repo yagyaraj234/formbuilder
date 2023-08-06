@@ -6,7 +6,7 @@ const Header = () => {
     <>
       <div className=" flex justify-between items-center py-1 px-10">
         <div className="flex items-center">
-          <p className="h-8 w-10 bg-[#f405dc] rounded-r-xl mr-2 opacity-40"></p>
+          <p className="h-8 w-10 bg-[#A40E4C] rounded-r-xl mr-2 "></p>
           <h1 className="text-4xl font-semibold">Form Builder</h1>
         </div>
         <div className="flex gap-10 font-semibold ">
