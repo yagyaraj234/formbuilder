@@ -4,11 +4,11 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="relative min-h-[93vh]">
       <Header />
-     {children}
+      {children}
       <Footer />
-    </>
+    </div>
   );
 };
 
