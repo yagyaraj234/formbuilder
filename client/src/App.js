@@ -4,7 +4,7 @@ import FormBuilder from "./components/FormBuilder";
 import Contact from "./components/Contact";
 import Preview from "./components/Preview";
 import Login from "./components/pages/Login";
-import Signup from "./components/pages/Signup";
+import SignupForm from "./components/pages/SignupForm";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/preview" element={<Preview />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<SignupForm />} />
       </Routes>
 
       {/* <Home /> */}

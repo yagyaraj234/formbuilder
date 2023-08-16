@@ -7,10 +7,10 @@ const Home = () => {
     <Layout>
       <div className="px-10 grid grid-cols-2">
         <div className=" min-h-[80vh] pt-20  ">
-          <p className="text-6xl font-extrabold text-[#A40E4C]">
+          <p className="text-6xl font-extrabold text-[#A40E4C] my-5">
             Empower Your Creativity :
           </p>
-          <p className="text-4xl font-bold"> Build Forms with Ease and</p>
+          <p className="text-4xl  font-bold"> Build Forms with Ease and</p>
           <p className="text-4xl font-bold">
             {" "}
             Precision using Our Intuitive <br /> Web App!"

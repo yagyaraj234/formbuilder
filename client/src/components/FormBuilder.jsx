@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Layout from "./Layout/Layout";
 import QuestionType from "./QuestionType";
+import { Link } from "react-router-dom";
 
 const FormBuilder = () => {
   // const [questionType, setQuestionType] = useState("");
@@ -25,9 +26,11 @@ const FormBuilder = () => {
 
   const [formName, setFormName] = useState("Untitled Project");
 
+  const [question, setQuestion] = useState([]);
+
   return (
     <Layout>
-      <div className="p-10 border m-10 rounded-xl">
+      <div className="p-10  border m-10 rounded-xl">
         <div className="flex justify-between">
           <div className="flex ">
             <input
@@ -38,16 +41,16 @@ const FormBuilder = () => {
               placeholder="Enter Project name"
             />
             <div className="mt-2">
-              <ion-icon
-                onClick={() => setFormName("")}
-                name="close-outline"
-              ></ion-icon>
+              <ion-icon name="close-outline"></ion-icon>
             </div>
           </div>
 
-          <button className="bg-[#A40E4C] text-white font-semibold px-3 py-1 rounded-xl">
+          <Link
+            to="/preview"
+            className="bg-[#A40E4C] text-white font-semibold px-3 py-1 rounded-xl"
+          >
             Show Preview
-          </button>
+          </Link>
         </div>
         <QuestionType />
       </div>
