@@ -14,7 +14,7 @@ const initialValue = {
   password: "",
 };
 const LoginPage = () => {
-  const baseURl = "https://formbuilder-back.vercel.app/";
+  const baseURl = "https://formbuilder-back.vercel.app";
   const url = `${baseURl}/login`;
 
   const navigate = useNavigate();

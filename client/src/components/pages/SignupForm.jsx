@@ -8,7 +8,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 const SignupForm = () => {
-  const baseURl = "https://formbuilder-back.vercel.app/";
+  const baseURl = "https://formbuilder-back.vercel.app";
   const url = `${baseURl}/login`;
 
   const validate = Yup.object().shape({
