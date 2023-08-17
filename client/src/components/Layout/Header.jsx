@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const Header = () => {
+  const isLoggedIn = useSelector((state) => state.auth);
   return (
     <>
       <div className=" flex justify-between items-center py-2 px-10">
@@ -31,20 +32,29 @@ const Header = () => {
             Contact
           </NavLink>
         </div>
-        <div className=" flex gap-10  ">
+        {isLoggedIn ? (
           <NavLink
-            to="/login"
-            className="font-semibold px-4 py-1 hover:text-primary "
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="/signup"
             className="bg-primary text-white px-4 py-1 rounded-xl hover:bg-white hover:text-primary hover:border-primary border-2 border-white hover:border-2 transition-colors duration-300 delay-100 font-semibold "
+            to="/profile"
           >
-            Register
+            Profile
           </NavLink>
-        </div>
+        ) : (
+          <div className=" flex gap-10  ">
+            <NavLink
+              to="/login"
+              className="font-semibold px-4 py-1 hover:text-primary "
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className="bg-primary text-white px-4 py-1 rounded-xl hover:bg-white hover:text-primary hover:border-primary border-2 border-white hover:border-2 transition-colors duration-300 delay-100 font-semibold "
+            >
+              Register
+            </NavLink>
+          </div>
+        )}
       </div>
       <p className="border-b border-gray-300 opacity-30"></p>
     </>
