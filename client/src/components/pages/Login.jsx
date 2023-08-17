@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { Formik, Form } from "formik";
@@ -7,12 +7,22 @@ import * as Yup from "yup";
 
 import Layout from "../Layout/Layout";
 import TextField from "./TextField";
-
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../store/auth";
 const initialValue = {
   email: "",
   password: "",
 };
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const dispatch = useDispatch();
+  // dispatch(setAuth());
+  const handleAuthenticationToggle = () => {
+    dispatch(setAuth());
+  };
+
   // const onLogin = async () => {
   //   try {
   //     setLoading(true);
@@ -36,10 +46,22 @@ const LoginPage = () => {
   });
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    try {
+      const response = await axios.post("/login", values);
+      toast.success(response.data.message);
+      handleAuthenticationToggle();
+      navigate("/");
+    } catch (error) {
+      toast.error(error);
+      console.log(error);
+    }
   };
   return (
     <Layout>
+      <Toaster />
+
+      <button onClick={handleAuthenticationToggle}>True</button>
+      <button onClick={handleAuthenticationToggle}>false</button>
       <Formik
         initialValues={initialValue}
         validationSchema={validate}
