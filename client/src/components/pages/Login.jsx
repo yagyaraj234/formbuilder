@@ -14,6 +14,9 @@ const initialValue = {
   password: "",
 };
 const LoginPage = () => {
+  const baseURl = "https://formbuilder-back.vercel.app/";
+  const url = `${baseURl}/login`;
+
   const navigate = useNavigate();
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -45,9 +48,10 @@ const LoginPage = () => {
       .required("Email is required"),
   });
 
+  
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post("/login", values);
+      const response = await axios.post(url, values);
       toast.success(response.data.message);
       handleAuthenticationToggle();
       navigate("/");

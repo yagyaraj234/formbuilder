@@ -8,6 +8,9 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 const SignupForm = () => {
+  const baseURl = "https://formbuilder-back.vercel.app/";
+  const url = `${baseURl}/login`;
+
   const validate = Yup.object().shape({
     name: Yup.string()
       .max(20, "Maximum 20 character")
@@ -33,7 +36,7 @@ const SignupForm = () => {
   const handleSubmit = async (values) => {
     // console.log(values);
     try {
-      const response = await axios.post("/signup", values);
+      const response = await axios.post(url, values);
       toast.success(response.data.message);
       console.log(response);
     } catch (error) {
@@ -42,7 +45,7 @@ const SignupForm = () => {
   };
   return (
     <Layout>
-      <Toaster/>
+      <Toaster />
       <Formik
         initialValues={initialValue}
         validationSchema={validate}
