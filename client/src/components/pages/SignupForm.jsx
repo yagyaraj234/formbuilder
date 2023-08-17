@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const SignupForm = () => {
   const baseURl = "https://formbuilder-back.vercel.app";
-  const url = `${baseURl}/login`;
+  const url = `${baseURl}/signup`;
 
   const validate = Yup.object().shape({
     name: Yup.string()
