@@ -7,7 +7,6 @@ async function dbConnect() {
       useUnifiedTopology: true,
     });
     const connection = mongoose.connection;
-
     connection.on("Connected", () => {
       console.log("MongoDb Connected successfully");
     });
