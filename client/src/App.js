@@ -7,9 +7,10 @@ import Login from "./components/pages/Login";
 import SignupForm from "./components/pages/SignupForm";
 import Profile from "./components/pages/Profile";
 import { useSelector } from "react-redux";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const userLoggedIn = useSelector((state) => state.auth);
+  const isAuth = useSelector((state) => state.auth.user);
 
   return (
     <>
@@ -20,17 +21,11 @@ function App() {
         <Route path="/preview" element={<Preview />} />
 
         <Route path="/profile" element={<Profile />} />
-      </Routes>
-      {userLoggedIn ? (
-        ""
-      ) : (
-        <Routes>
+        <Route element={<ProtectedRoute isAuth={isAuth} />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignupForm />} />
-        </Routes>
-      )}
-
-      {/* <Home /> */}
+        </Route>
+      </Routes>
     </>
   );
 }

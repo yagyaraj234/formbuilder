@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Header = () => {
-  const isLoggedIn = useSelector((state) => state.auth);
+  const isAuth = useSelector((state) => state.auth.user);
+
   return (
     <>
       <div className=" flex justify-between items-center py-2 px-10">
@@ -32,7 +33,7 @@ const Header = () => {
             Contact
           </NavLink>
         </div>
-        {isLoggedIn ? (
+        {isAuth?.token ? (
           <NavLink
             className="bg-primary text-white px-4 py-1 rounded-xl hover:bg-white hover:text-primary hover:border-primary border-2 border-white hover:border-2 transition-colors duration-300 delay-100 font-semibold "
             to="/profile"

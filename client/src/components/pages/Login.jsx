@@ -7,40 +7,21 @@ import * as Yup from "yup";
 
 import Layout from "../Layout/Layout";
 import TextField from "./TextField";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/auth";
+import { login } from "../../store/slice/authSlice";
+
 const initialValue = {
-  email: "",
-  password: "",
+  email: "yagyaraj@gmail.com",
+  password: "8959yagya",
 };
 const LoginPage = () => {
-  const baseURl = "https://formbuilder-back.vercel.app";
-  const url = `${baseURl}/login`;
-
-  const navigate = useNavigate();
-  const [authenticated, setAuthenticated] = useState(false);
-
   const dispatch = useDispatch();
-  // dispatch(setAuth());
+  const navigate = useNavigate();
+
   const handleAuthenticationToggle = () => {
     dispatch(setAuth());
   };
-
-  // const onLogin = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post("/api/users/login", user);
-  //     toast.success("Login successfully");
-  //     const userId = await axios.get("/api/users/me");
-  //     console.log(userId.data.data._id);
-  //     const id = userId.data.data._id;
-  //     //   router.push(`/profile/${id}`);
-  //   } catch (err) {
-  //     toast.error(err.response.data.error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const validate = Yup.object().shape({
     email: Yup.string()
@@ -48,17 +29,25 @@ const LoginPage = () => {
       .required("Email is required"),
   });
 
-  
+  const isAuth = useSelector((state) => state.auth.user);
+  // console.log(isAuth);
   const handleSubmit = async (values) => {
-    try {
-      const response = await axios.post(url, values);
-      toast.success(response.data.message);
-      handleAuthenticationToggle();
-      navigate("/");
-    } catch (error) {
-      toast.error(error);
-      console.log(error);
+    dispatch(login(values));
+
+    if (isAuth?.token) {
+      toast.success("Logged In");
+      navigate("/profile");
     }
+
+    // try {
+    //   const response = await axios.post(url, values);
+    //   toast.success(response.data.message);
+    //   handleAuthenticationToggle();
+    //   navigate("/");
+    // } catch (error) {
+    //   toast.error(error);
+    //   console.log(error);
+    // }
   };
   return (
     <Layout>
