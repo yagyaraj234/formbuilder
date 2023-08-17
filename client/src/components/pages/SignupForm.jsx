@@ -1,10 +1,11 @@
 import React from "react";
-import { Formik, Form, } from "formik";
+import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import TextField from "./TextField";
 import * as Yup from "yup";
 import Layout from "../Layout/Layout";
-// import axios from "axios";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const SignupForm = () => {
   const validate = Yup.object().shape({
@@ -29,11 +30,19 @@ const SignupForm = () => {
     confirmPassword: "",
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    // console.log(values);
+    try {
+      const response = await axios.post("/signup", values);
+      toast.success(response.data.message);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Layout>
+      <Toaster/>
       <Formik
         initialValues={initialValue}
         validationSchema={validate}
