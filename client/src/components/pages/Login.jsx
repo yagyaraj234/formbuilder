@@ -26,21 +26,7 @@ const LoginPage = () => {
     dispatch(setAuth());
   };
 
-  // const onLogin = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post("/api/users/login", user);
-  //     toast.success("Login successfully");
-  //     const userId = await axios.get("/api/users/me");
-  //     console.log(userId.data.data._id);
-  //     const id = userId.data.data._id;
-  //     //   router.push(`/profile/${id}`);
-  //   } catch (err) {
-  //     toast.error(err.response.data.error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  
 
   const validate = Yup.object().shape({
     email: Yup.string()
@@ -63,9 +49,6 @@ const LoginPage = () => {
   return (
     <Layout>
       <Toaster />
-
-      <button onClick={handleAuthenticationToggle}>True</button>
-      <button onClick={handleAuthenticationToggle}>false</button>
       <Formik
         initialValues={initialValue}
         validationSchema={validate}
